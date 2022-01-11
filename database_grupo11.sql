@@ -13,12 +13,13 @@ CREATE TABLE tb_departamentos (
 
 INSERT INTO tb_departamentos (id_departamento, nome_departamento)
 VALUES
-('TF', 'Time Facilitação'),
 ('CE', 'Comunidade/Empregabilidade'),
 ('CM', 'Comunicação e Marketing'),
 ('FI', 'Financeiro'),
 ('MCI', 'Mentoria para Carreiras Internacionais'),
-('TM', 'Monitoria');
+('TM', 'Monitoria')
+('FT', 'Facilitação Tech'),
+('FS', 'Facilitação Soft');
 
 CREATE TABLE tb_facilitadores
 (
