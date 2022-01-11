@@ -133,3 +133,15 @@ VALUES
 (58, 'Luiza Fogaça Alliot', 'F', '07/09/1987', '677.096.728-68', '(82) 98433-3540', 'lualliot@escritorioindaia.com.br', 'Maceió', 'AL', 'Brasil'),
 (59, 'Sérgio Ian Arthur das Neves', 'M', '02/05/1969', '504.090.371-50', '(98) 99643-1179', 'sergioneves@rebecacometerra.com.br', 'São Luís', 'MA', 'Brasil'),
 (60, 'Eliseu Souto Maior Reutemann', 'M', '17/03/1975', '761.020.596-62', '(94) 98569-4645', 'esmreut@iacit.com', 'Ponta Grossa', 'PR', 'Brasil');
+
+
+
+CREATE TABLE tb_cursos (
+
+	id_curso INT PRIMARY KEY,
+	nome_curso VARCHAR (255);
+
+INSERT INTO tb_cursos (id_curso, nome_curso)
+VALUES
+	(1, 'Análise de dados'),
+	(2, 'Desenvolvimento Web');
