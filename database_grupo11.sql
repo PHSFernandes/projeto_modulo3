@@ -139,7 +139,7 @@ VALUES
 CREATE TABLE tb_cursos (
 
 	id_curso INT PRIMARY KEY,
-	nome_curso VARCHAR (255);
+	nome_curso VARCHAR (255));
 
 INSERT INTO tb_cursos (id_curso, nome_curso)
 VALUES
