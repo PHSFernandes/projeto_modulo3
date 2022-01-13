@@ -134,3 +134,45 @@ VALUES
 (58, 'Luiza Fogaça Alliot', 'F', '07/09/1987', '677.096.728-68', '(82) 98433-3540', 'lualliot@escritorioindaia.com.br', 'Maceió', 'AL', 'Brasil'),
 (59, 'Sérgio Ian Arthur das Neves', 'M', '02/05/1969', '504.090.371-50', '(98) 99643-1179', 'sergioneves@rebecacometerra.com.br', 'São Luís', 'MA', 'Brasil'),
 (60, 'Eliseu Souto Maior Reutemann', 'M', '17/03/1975', '761.020.596-62', '(94) 98569-4645', 'esmreut@iacit.com', 'Ponta Grossa', 'PR', 'Brasil');
+
+
+
+CREATE TABLE tb_cursos(
+	id_curso SERIAL NOT NULL,
+	PRIMARY KEY (id_curso),
+	nome_curso VARCHAR (255));
+
+INSERT INTO tb_cursos (id_curso, nome_curso)
+VALUES
+	(1, 'Análise de dados'),
+	(2, 'Desenvolvimento Web');
+
+
+
+
+
+CREATE TABLE tb_modulos (
+
+	id_modulo SERIAL NOT NULL,
+	PRIMARY KEY (id_modulo),
+	nome VARCHAR (255),
+	conteudo VARCHAR (255),
+	duracao_dias INT,
+	id_curso INT NOT NULL,
+	CONSTRAINT tb_modulos_fk_id_curso FOREIGN KEY (id_curso) REFERENCES tb_cursos (id_curso)
+);
+	
+	
+INSERT INTO tb_modulos (id_modulo, nome, conteudo, duracao_dias, id_curso)
+VALUES
+	(1,'Iniciando em python','Conteúdo introdutório de python e git hub', 32, 1),
+	(2,'Desenvolvendo a linguagem','Bibliotecas, list comprehension e orientação ao objeto', 27, 1),
+	(3,'Modelando bancos','SQL, análise e modelagem de bancos de dados, Postgres e metodologias ágeis', 25, 1),
+	(4,'Melhorando os datasets', 'Pandas, Google colab, Python: Plotly e Seaborn e visualização de dados', 30, 1),
+	(5,'Trabalhando com os dados', 'Mineração de dados, análise e tratamento de dados e Storytelling', 29, 1),
+	(6,'Introdução ao mercado de trabalho', 'Tableu, operações em tabelas e dashboards, empregabilidade e postura para processos seletivos', 33, 1),
+    (7,'Introdução ao desenvolvilemnto front-end','HTML5, CSS3, lógica de programação, Javascript, GitHub', 33, 2),
+	(8,'Orientação a objeto e HTTP', 'Criar páginas dinâmicas, orientação a objetos em Javascript e requisições à APIs,', 28, 2),
+	(9,'Armazenamento de dados e metodologias ágeis', 'Modelar banco de dados, realizar operações de escrita, leitura, atualização e consultas avançadas nos bancos de dados', 41, 2),
+	(10,'Frameworks e bibliotecas', 'Criar APIs para interagir com o banco de dados', 30, 2),
+	(11,'Tecnologias client-side', 'Criar interfaces e componentes com React, abordagem de classes/funcional e conhecer bibliotecas', 35, 2);
