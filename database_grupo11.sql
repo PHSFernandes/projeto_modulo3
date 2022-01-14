@@ -17,7 +17,7 @@ VALUES
 ('CM', 'Comunicação e Marketing'),
 ('FI', 'Financeiro'),
 ('MCI', 'Mentoria para Carreiras Internacionais'),
-('TM', 'Monitoria')
+('TM', 'Monitoria'),
 ('FT', 'Facilitação Tech'),
 ('FS', 'Facilitação Soft');
 
