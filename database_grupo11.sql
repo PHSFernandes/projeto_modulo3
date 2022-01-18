@@ -141,14 +141,16 @@ VALUES
 
 
 CREATE TABLE tb_cursos(
-	id_curso SERIAL NOT NULL,
+	id_curso VARCHAR (2) PRIMARY KEY,
 	PRIMARY KEY (id_curso),
-	nome_curso VARCHAR (255));
+	nome_curso VARCHAR (255),
+	descricao_curso VARCHAR (255)
+	);
 
-INSERT INTO tb_cursos (id_curso, nome_curso)
+INSERT INTO tb_cursos (id_curso, nome_curso, descricao_curso)
 VALUES
-	(1, 'Análise de dados'),
-	(2, 'Desenvolvimento Web');
+	('AD', 'Análise de dados','Aprenda a organizar e analisar dados com foco na obtenção de soluções orientadas para a resolução de problemas'),
+	('WB', 'Desenvolvimento Web', 'Aprender a criar websites funcionais, esteticamente atraentes e orientados para todos os tipos de dispositivos');
 
 
 
@@ -161,64 +163,58 @@ CREATE TABLE tb_modulos (
 	nome VARCHAR (255),
 	conteudo VARCHAR (255),
 	duracao_dias INT,
-	id_curso INT NOT NULL,
+	id_curso VARCHAR (2) NOT NULL,
 	CONSTRAINT tb_modulos_fk_id_curso FOREIGN KEY (id_curso) REFERENCES tb_cursos (id_curso)
 );
 	
 	
 INSERT INTO tb_modulos (id_modulo, nome, conteudo, duracao_dias, id_curso)
 VALUES
-	(1,'Iniciando em python','Conteúdo introdutório de python e git hub', 32, 1),
-	(2,'Desenvolvendo a linguagem','Bibliotecas, list comprehension e orientação ao objeto', 27, 1),
-	(3,'Modelando bancos','SQL, análise e modelagem de bancos de dados, Postgres e metodologias ágeis', 25, 1),
-	(4,'Melhorando os datasets', 'Pandas, Google colab, Python: Plotly e Seaborn e visualização de dados', 30, 1),
-	(5,'Trabalhando com os dados', 'Mineração de dados, análise e tratamento de dados e Storytelling', 29, 1),
-	(6,'Introdução ao mercado de trabalho', 'Tableu, operações em tabelas e dashboards, empregabilidade e postura para processos seletivos', 33, 1),
-    (7,'Introdução ao desenvolvilemnto front-end','HTML5, CSS3, lógica de programação, Javascript, GitHub', 33, 2),
-	(8,'Orientação a objeto e HTTP', 'Criar páginas dinâmicas, orientação a objetos em Javascript e requisições à APIs,', 28, 2),
-	(9,'Armazenamento de dados e metodologias ágeis', 'Modelar banco de dados, realizar operações de escrita, leitura, atualização e consultas avançadas nos bancos de dados', 41, 2),
-	(10,'Frameworks e bibliotecas', 'Criar APIs para interagir com o banco de dados', 30, 2),
-	(11,'Tecnologias client-side', 'Criar interfaces e componentes com React, abordagem de classes/funcional e conhecer bibliotecas', 35, 2);
+	(1,'Iniciando em python','Conteúdo introdutório de python e git hub', 32, 'AD'),
+	(2,'Desenvolvendo a linguagem','Bibliotecas, list comprehension e orientação ao objeto', 27, 'AD'),
+	(3,'Modelando bancos','SQL, análise e modelagem de bancos de dados, Postgres e metodologias ágeis', 25, 'AD'),
+	(4,'Melhorando os datasets', 'Pandas, Google colab, Python: Plotly e Seaborn e visualização de dados', 30, 'AD'),
+	(5,'Trabalhando com os dados', 'Mineração de dados, análise e tratamento de dados e Storytelling', 29, 'AD'),
+	(6,'Introdução ao mercado de trabalho', 'Tableu, operações em tabelas e dashboards, empregabilidade e postura para processos seletivos', 33, 'AD'),
+    (7,'Introdução ao desenvolvilemnto front-end','HTML5, CSS3, lógica de programação, Javascript, GitHub', 33, 'WB'),
+	(8,'Orientação a objeto e HTTP', 'Criar páginas dinâmicas, orientação a objetos em Javascript e requisições à APIs,', 28, 'WB'),
+	(9,'Armazenamento de dados e metodologias ágeis', 'Modelar banco de dados, realizar operações de escrita, leitura, atualização e consultas avançadas nos bancos de dados', 41, 'WB'),
+	(10,'Frameworks e bibliotecas', 'Criar APIs para interagir com o banco de dados', 30, 'WB'),
+	(11,'Tecnologias client-side', 'Criar interfaces e componentes com React, abordagem de classes/funcional e conhecer bibliotecas', 35, 'WB');
 
 CREATE TABLE tb_facilitador_modulo(
 	id_modulo INT NOT NULL,
 	id_facilitador INT NOT NULL,
-	CONSTRAINT tb_facilitador_modulo_fk_id_modul0 FOREIGN KEY (id_modulo) REFERENCES tb_modulos(id_modulo),
-	CONSTRAINT tb_facilitador_modulo_fk_id_modulo  FOREIGN KEY (id_facilitador) REFERENCES tb_facilitadores(id_facilitador));
+	CONSTRAINT tb_facilitador_turma_fk_id_turma FOREIGN KEY (id_turma) REFERENCES tb_turma(id_turma),
+	CONSTRAINT tb_facilitador_turma_fk_id_facilitador  FOREIGN KEY (id_facilitador) REFERENCES tb_facilitadores(id_facilitador));
 
 
 
 
 
 
-INSERT INTO tb_facilitador_modulo(id_facilitador,id_modulo)
+INSERT INTO tb_facilitador_turma(id_facilitador,id_modulo)
 VALUES
-	(6, 1),
-	(6, 2),
-	(7, 1),
-	(7, 2),
-	(8, 3),
-	(9, 3),
-	(10, 4),
-	(11, 4),
-	(12, 5),
-	(13, 5),
-	(14, 6),
-	(15, 6),
-	(16, 7),
-	(17, 7),
-	(16, 8),
-	(17, 8),
-	(18, 9),
-	(19, 9),
-	(18, 10),
-	(19, 10),
-	(20, 11);
+	(6, 'T1'),
+	(7, 'T1'),
+	(8, 'T1'),
+	(9, 'T2'),
+	(10, 'T2'),
+	(11, 'T2'),
+	(12, 'T3'),
+	(13, 'T3'),
+	(14, 'T3'),
+	(15, 'T4'),
+	(16, 'T4'),
+	(17, 'T4'),
+	(18, 'T5'),
+	(19, 'T5'),
+	(20, 'T5');
 
 CREATE TABLE tb_turma
 (
 	id_turma VARCHAR (4) PRIMARY KEY,
-	id_curso VARCHAR (2),
+	id_curso VARCHAR (2) NOT NULL,
 	CONSTRAINT tb_turma_fk_id_curso FOREIGN KEY (id_curso) REFERENCES tb_cursos (id_curso)
 );
 
