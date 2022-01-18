@@ -176,3 +176,38 @@ VALUES
 	(9,'Armazenamento de dados e metodologias ágeis', 'Modelar banco de dados, realizar operações de escrita, leitura, atualização e consultas avançadas nos bancos de dados', 41, 2),
 	(10,'Frameworks e bibliotecas', 'Criar APIs para interagir com o banco de dados', 30, 2),
 	(11,'Tecnologias client-side', 'Criar interfaces e componentes com React, abordagem de classes/funcional e conhecer bibliotecas', 35, 2);
+
+CREATE TABLE tb_facilitador_modulo(
+	id_modulo INT NOT NULL,
+	id_facilitador INT NOT NULL,
+	CONSTRAINT tb_facilitador_modulo_fk_id_modul0 FOREIGN KEY (id_modulo) REFERENCES tb_modulos(id_modulo),
+	CONSTRAINT tb_facilitador_modulo_fk_id_modulo  FOREIGN KEY (id_facilitador) REFERENCES tb_facilitadores(id_facilitador));
+
+
+
+
+
+
+INSERT INTO tb_facilitador_modulo(id_facilitador,id_modulo)
+VALUES
+	(6, 1),
+	(6, 2),
+	(7, 1),
+	(7, 2),
+	(8, 3),
+	(9, 3),
+	(10, 4),
+	(11, 4),
+	(12, 5),
+	(13, 5),
+	(14, 6),
+	(15, 6),
+	(16, 7),
+	(17, 7),
+	(16, 8),
+	(17, 8),
+	(18, 9),
+	(19, 9),
+	(18, 10),
+	(19, 10),
+	(20, 11),
