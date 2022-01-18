@@ -213,4 +213,20 @@ VALUES
 	(19, 9),
 	(18, 10),
 	(19, 10),
-	(20, 11),
+	(20, 11);
+
+CREATE TABLE tb_turma
+(
+	id_turma VARCHAR (4) PRIMARY KEY,
+	id_curso VARCHAR (2),
+	CONSTRAINT tb_turma_fk_id_curso FOREIGN KEY (id_curso) REFERENCES tb_cursos (id_curso)
+);
+
+INSERT INTO tb_turma (id_turma, id_curso)
+VALUES
+('T1', 'WD'),
+('T2', 'WD'),
+('T3', 'AD'),
+('T4', 'AD'),
+('T5', 'WD')
+;
