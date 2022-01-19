@@ -58,6 +58,17 @@ INSERT INTO tb_facilitadores (id_facilitador, nome, idade, cpf, rg, data_nasc, s
 (19, 'Paulo Henrique Fernandes', 44, '338.080.108-32', '74.152.072-2', '1/3/1978', 'M', 'phfernandes@carioca.com.br', '(21) 98839-0273', 'A+', 'FS'),
 (20, 'Betina Assis', 46, '932.013.108-31', '23.023.238-9', '1/5/1976', 'M', 'betinass@arara.com.br', '(22) 98891-1756', 'AB+', 'FT');
 
+CREATE TABLE tb_cursos(
+	id_curso VARCHAR (2) PRIMARY KEY,
+	nome_curso VARCHAR (255),
+	descricao_curso VARCHAR (255)
+	);
+
+INSERT INTO tb_cursos (id_curso, nome_curso, descricao_curso)
+VALUES
+	('AD', 'Análise de dados','Aprenda a organizar e analisar dados com foco na obtenção de soluções orientadas para a resolução de problemas'),
+	('WD', 'Desenvolvimento Web', 'Aprender a criar websites funcionais, esteticamente atraentes e orientados para todos os tipos de dispositivos');
+
 CREATE TABLE tb_alunos (
 		
 	id_aluno INT PRIMARY KEY,
@@ -139,23 +150,6 @@ VALUES
 (60, 'Eliseu Souto Maior Reutemann', 'M', '17/03/1975', '761.020.596-62', '(94) 98569-4645', 'esmreut@iacit.com', 'Ponta Grossa', 'PR', 'Brasil', 'T4');
 
 
-
-CREATE TABLE tb_cursos(
-	id_curso VARCHAR (2) PRIMARY KEY,
-	PRIMARY KEY (id_curso),
-	nome_curso VARCHAR (255),
-	descricao_curso VARCHAR (255)
-	);
-
-INSERT INTO tb_cursos (id_curso, nome_curso, descricao_curso)
-VALUES
-	('AD', 'Análise de dados','Aprenda a organizar e analisar dados com foco na obtenção de soluções orientadas para a resolução de problemas'),
-	('WB', 'Desenvolvimento Web', 'Aprender a criar websites funcionais, esteticamente atraentes e orientados para todos os tipos de dispositivos');
-
-
-
-
-
 CREATE TABLE tb_modulos (
 
 	id_modulo SERIAL NOT NULL,
@@ -166,8 +160,7 @@ CREATE TABLE tb_modulos (
 	id_curso VARCHAR (2) NOT NULL,
 	CONSTRAINT tb_modulos_fk_id_curso FOREIGN KEY (id_curso) REFERENCES tb_cursos (id_curso)
 );
-	
-	
+		
 INSERT INTO tb_modulos (id_modulo, nome, conteudo, duracao_dias, id_curso)
 VALUES
 	(1,'Iniciando em python','Conteúdo introdutório de python e git hub', 32, 'AD'),
@@ -176,24 +169,19 @@ VALUES
 	(4,'Melhorando os datasets', 'Pandas, Google colab, Python: Plotly e Seaborn e visualização de dados', 30, 'AD'),
 	(5,'Trabalhando com os dados', 'Mineração de dados, análise e tratamento de dados e Storytelling', 29, 'AD'),
 	(6,'Introdução ao mercado de trabalho', 'Tableu, operações em tabelas e dashboards, empregabilidade e postura para processos seletivos', 33, 'AD'),
-    (7,'Introdução ao desenvolvilemnto front-end','HTML5, CSS3, lógica de programação, Javascript, GitHub', 33, 'WB'),
-	(8,'Orientação a objeto e HTTP', 'Criar páginas dinâmicas, orientação a objetos em Javascript e requisições à APIs,', 28, 'WB'),
-	(9,'Armazenamento de dados e metodologias ágeis', 'Modelar banco de dados, realizar operações de escrita, leitura, atualização e consultas avançadas nos bancos de dados', 41, 'WB'),
-	(10,'Frameworks e bibliotecas', 'Criar APIs para interagir com o banco de dados', 30, 'WB'),
-	(11,'Tecnologias client-side', 'Criar interfaces e componentes com React, abordagem de classes/funcional e conhecer bibliotecas', 35, 'WB');
+    (7,'Introdução ao desenvolvilemnto front-end','HTML5, CSS3, lógica de programação, Javascript, GitHub', 33, 'WD'),
+	(8,'Orientação a objeto e HTTP', 'Criar páginas dinâmicas, orientação a objetos em Javascript e requisições à APIs,', 28, 'WD'),
+	(9,'Armazenamento de dados e metodologias ágeis', 'Modelar banco de dados, realizar operações de escrita, leitura, atualização e consultas avançadas nos bancos de dados', 41, 'WD'),
+	(10,'Frameworks e bibliotecas', 'Criar APIs para interagir com o banco de dados', 30, 'WD'),
+	(11,'Tecnologias client-side', 'Criar interfaces e componentes com React, abordagem de classes/funcional e conhecer bibliotecas', 35, 'WD');
 
-CREATE TABLE tb_facilitador_modulo(
-	id_modulo INT NOT NULL,
+CREATE TABLE tb_facilitador_turma(
 	id_facilitador INT NOT NULL,
+	id_turma VARCHAR(4) NOT NULL,
 	CONSTRAINT tb_facilitador_turma_fk_id_turma FOREIGN KEY (id_turma) REFERENCES tb_turma(id_turma),
 	CONSTRAINT tb_facilitador_turma_fk_id_facilitador  FOREIGN KEY (id_facilitador) REFERENCES tb_facilitadores(id_facilitador));
 
-
-
-
-
-
-INSERT INTO tb_facilitador_turma(id_facilitador,id_modulo)
+INSERT INTO tb_facilitador_turma(id_facilitador,id_turma)
 VALUES
 	(6, 'T1'),
 	(7, 'T1'),
