@@ -69,6 +69,21 @@ VALUES
 	('AD', 'Análise de dados','Aprenda a organizar e analisar dados com foco na obtenção de soluções orientadas para a resolução de problemas'),
 	('WD', 'Desenvolvimento Web', 'Aprender a criar websites funcionais, esteticamente atraentes e orientados para todos os tipos de dispositivos');
 
+CREATE TABLE tb_turma
+(
+	id_turma VARCHAR (4) PRIMARY KEY,
+	id_curso VARCHAR (2) NOT NULL,
+	CONSTRAINT tb_turma_fk_id_curso FOREIGN KEY (id_curso) REFERENCES tb_cursos (id_curso)
+);
+
+INSERT INTO tb_turma (id_turma, id_curso)
+VALUES
+('T1', 'WD'),
+('T2', 'WD'),
+('T3', 'AD'),
+('T4', 'AD'),
+('T5', 'WD');
+
 CREATE TABLE tb_alunos (
 		
 	id_aluno INT PRIMARY KEY,
@@ -198,18 +213,3 @@ VALUES
 	(18, 'T5'),
 	(19, 'T5'),
 	(20, 'T5');
-
-CREATE TABLE tb_turma
-(
-	id_turma VARCHAR (4) PRIMARY KEY,
-	id_curso VARCHAR (2) NOT NULL,
-	CONSTRAINT tb_turma_fk_id_curso FOREIGN KEY (id_curso) REFERENCES tb_cursos (id_curso)
-);
-
-INSERT INTO tb_turma (id_turma, id_curso)
-VALUES
-('T1', 'WD'),
-('T2', 'WD'),
-('T3', 'AD'),
-('T4', 'AD'),
-('T5', 'WD');
