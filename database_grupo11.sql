@@ -73,16 +73,18 @@ CREATE TABLE tb_turma
 (
 	id_turma VARCHAR (4) PRIMARY KEY,
 	id_curso VARCHAR (2) NOT NULL,
+	data_inicio DATE,
+	data_termino DATE,
 	CONSTRAINT tb_turma_fk_id_curso FOREIGN KEY (id_curso) REFERENCES tb_cursos (id_curso)
 );
 
-INSERT INTO tb_turma (id_turma, id_curso)
+INSERT INTO tb_turma (id_turma, id_curso, data_inicio, data_termino)
 VALUES
-('T1', 'WD'),
-('T2', 'WD'),
-('T3', 'AD'),
-('T4', 'AD'),
-('T5', 'WD');
+('T1', 'WD', '14/06/2021', '23/12/2021'),
+('T2', 'WD', '18/10/2021', '20/04/2022'),
+('T3', 'AD', '25/10/2021', '19/05/2022'),
+('T4', 'AD', '25/10/2021', '19/05/2022'),
+('T5', 'WD', '07/02/2022', '11/08/2022');
 
 CREATE TABLE tb_alunos (
 		
