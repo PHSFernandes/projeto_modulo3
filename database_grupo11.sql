@@ -50,13 +50,7 @@ INSERT INTO tb_facilitadores (id_facilitador, nome, idade, cpf, rg, data_nasc, s
 (11, 'Bento Kauê Isaac Cardoso', 47, '743.729.757-40', '30.277.510-9', '1/4/1975', 'M', 'bentocardoso@pisbrasil.com.br', '(21) 98977-8421', 'O+', 'FS'),
 (12, 'Cauã Martin Samuel Corte Real', 77, '348.016.537-07', '43.673.899-5', '1/4/1945', 'M', 'cauacortereal@nine9.com.br', '(21) 99311-3201', 'O-', 'FT'),
 (13, 'Giovanna Luna Marcela da Rocha', 60, '278.482.697-01', '27.041.996-2', '1/5/1962', 'F', 'giovannarocha@webin.com.br', '(21) 99119-6965', 'A+', 'FS'),
-(14, 'Evelyn Luciana Nair Souza', 59, '369.239.887-56', '48.758.973-7', '1/7/1963', 'F', 'eve_souza@tanby.com.br', '(21) 99685-2621', 'O-', 'FT'),
-(15, 'Enzo Otávio Nunes', 60, '388.231.867-81', '21.740.520-4', '1/7/1962', 'M', 'enzonunes@zulix.com.br', '(21) 98975-2053', 'O+', 'FS'),
-(16, 'Cleonice Rocha', 50, '139.891.957-86', '33.169.958-8', '9/11/1971', 'F', 'caca@saudade.com.br', '(21) 99761-0000', 'O+', 'FT'),
-(17, 'Calebe Edson Gomes', 46, '328.287.507-01', '47.251.500-7', '1/3/1976', 'M', 'calebgomes@argo.com.br', '(21) 98155-0273', 'A+', 'FS'),
-(18, 'Theo Kauê Cardoso', 66, '863.313.687-28', '34.044.761-8', '1/5/1956', 'M', 'theokaue@araraquara.com.br', '(21) 98891-1756', 'AB+', 'FT'),
-(19, 'Paulo Henrique Fernandes', 44, '338.080.108-32', '74.152.072-2', '1/3/1978', 'M', 'phfernandes@carioca.com.br', '(21) 98839-0273', 'A+', 'FS'),
-(20, 'Betina Assis', 46, '932.013.108-31', '23.023.238-9', '1/5/1976', 'M', 'betinass@arara.com.br', '(22) 98891-1756', 'AB+', 'FT');
+
 
 CREATE TABLE tb_cursos(
 	id_curso VARCHAR (2) PRIMARY KEY,
