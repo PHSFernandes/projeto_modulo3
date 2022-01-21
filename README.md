@@ -1,2 +1,8 @@
 # projeto_modulo3
-Projeto final de Banco de Dados - Resilia Módulo 3
+Projeto desenvolvido com a finalidade de atender os requisitos necessários à finalização do Módulo 3 (elaboração do Banco de Dados - Resilia)
+
+Integrantes do GRUPO:
+Guilherme Rezende
+Rhayza Pinto
+Paulo Henrique S. Fernandes
+Bruno Mendes Cerqueira
