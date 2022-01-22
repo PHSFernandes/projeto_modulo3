@@ -1,14 +1,6 @@
-CREATE DATABASE projeto_m3
-    WITH 
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    CONNECTION LIMIT = -1;
-
-CREATE TABLE tb_departamentos (
-		
+CREATE TABLE tb_departamentos (		
 	id_departamento VARCHAR (3) PRIMARY KEY,
 	nome_departamento VARCHAR (255)
-
 );
 
 INSERT INTO tb_departamentos (id_departamento, nome_departamento)
@@ -21,8 +13,7 @@ VALUES
 ('FT', 'Facilitação Tech'),
 ('FS', 'Facilitação Soft');
 
-CREATE TABLE tb_facilitadores
-(
+CREATE TABLE tb_facilitadores(
     id_facilitador INT NOT NULL PRIMARY KEY,
     nome VARCHAR(200) NOT NULL,
     idade INT,
@@ -36,6 +27,7 @@ CREATE TABLE tb_facilitadores
     id_departamento VARCHAR (3),
     CONSTRAINT tb_facilitadores_fk_id_departamento FOREIGN KEY (id_departamento) REFERENCES tb_departamentos (id_departamento)
 );
+
 INSERT INTO tb_facilitadores (id_facilitador, nome, idade, cpf, rg, data_nasc, sexo, email, celular, tipo_sang, id_departamento) VALUES 
 (1, 'Benício Heitor Tomás Araújo', 40, '661.086.457-84', '23.891.613-3', '1/2/1982', 'M', 'beniaraujo-82@arganet.com.br', '(21) 98716-7547', 'O+', 'CE'),
 (2, 'Henrique Osvaldo de Paula', 21, '442.017.587-70', '31.701.995-8', '1/1/2001', 'M', 'henriquepaul-72@tokiomarine.com.br', '(21) 99457-7604', 'A-', 'CM'),
@@ -49,22 +41,20 @@ INSERT INTO tb_facilitadores (id_facilitador, nome, idade, cpf, rg, data_nasc, s
 (10, 'Sabrina Pietra Vitória Barros', 47, '596.984.447-00', '18.140.181-2', '1/5/1975', 'F', 'sabrinabarros@jammer.com.br', '(21) 98407-6922', 'O+', 'FT'),
 (11, 'Bento Kauê Isaac Cardoso', 47, '743.729.757-40', '30.277.510-9', '1/4/1975', 'M', 'bentocardoso@pisbrasil.com.br', '(21) 98977-8421', 'O+', 'FS'),
 (12, 'Cauã Martin Samuel Corte Real', 77, '348.016.537-07', '43.673.899-5', '1/4/1945', 'M', 'cauacortereal@nine9.com.br', '(21) 99311-3201', 'O-', 'FT'),
-(13, 'Giovanna Luna Marcela da Rocha', 60, '278.482.697-01', '27.041.996-2', '1/5/1962', 'F', 'giovannarocha@webin.com.br', '(21) 99119-6965', 'A+', 'FS'),
-
+(13, 'Giovanna Luna Marcela da Rocha', 60, '278.482.697-01', '27.041.996-2', '1/5/1962', 'F', 'giovannarocha@webin.com.br', '(21) 99119-6965', 'A+', 'FS');
 
 CREATE TABLE tb_cursos(
 	id_curso VARCHAR (2) PRIMARY KEY,
 	nome_curso VARCHAR (255),
 	descricao_curso VARCHAR (255)
-	);
+);
 
 INSERT INTO tb_cursos (id_curso, nome_curso, descricao_curso)
 VALUES
 	('AD', 'Análise de dados','Aprenda a organizar e analisar dados com foco na obtenção de soluções orientadas para a resolução de problemas'),
 	('WD', 'Desenvolvimento Web', 'Aprender a criar websites funcionais, esteticamente atraentes e orientados para todos os tipos de dispositivos');
 
-CREATE TABLE tb_turma
-(
+CREATE TABLE tb_turma(
 	id_turma VARCHAR (4) PRIMARY KEY,
 	id_curso VARCHAR (2) NOT NULL,
 	data_inicio DATE,
@@ -80,8 +70,7 @@ VALUES
 ('T4', 'AD', '25/10/2021', '19/05/2022'),
 ('T5', 'WD', '07/02/2022', '11/08/2022');
 
-CREATE TABLE tb_alunos (
-		
+CREATE TABLE tb_alunos (		
 	id_aluno INT PRIMARY KEY,
 	nome_completo VARCHAR (255),
 	sexo VARCHAR (1),
@@ -94,7 +83,6 @@ CREATE TABLE tb_alunos (
 	pais VARCHAR (255),
 	id_turma VARCHAR (4),
 	CONSTRAINT tb_alunos_fk_id_turma FOREIGN KEY (id_turma) REFERENCES tb_turma (id_turma)
-
 );
 
 INSERT INTO tb_alunos (id_aluno, nome_completo, sexo, data_nascimento, cpf, telefone, email, cidade, estado, pais, id_turma)
@@ -160,9 +148,7 @@ VALUES
 (59, 'Sérgio Ian Arthur das Neves', 'M', '02/05/1969', '504.090.371-50', '(98) 99643-1179', 'sergioneves@rebecacometerra.com.br', 'São Luís', 'MA', 'Brasil', 'T4'),
 (60, 'Eliseu Souto Maior Reutemann', 'M', '17/03/1975', '761.020.596-62', '(94) 98569-4645', 'esmreut@iacit.com', 'Ponta Grossa', 'PR', 'Brasil', 'T4');
 
-
 CREATE TABLE tb_modulos (
-
 	id_modulo SERIAL NOT NULL,
 	PRIMARY KEY (id_modulo),
 	nome VARCHAR (255),
@@ -190,11 +176,12 @@ CREATE TABLE tb_facilitador_turma(
 	id_facilitador INT NOT NULL,
 	id_turma VARCHAR(4) NOT NULL,
 	CONSTRAINT tb_facilitador_turma_fk_id_turma FOREIGN KEY (id_turma) REFERENCES tb_turma(id_turma),
-	CONSTRAINT tb_facilitador_turma_fk_id_facilitador  FOREIGN KEY (id_facilitador) REFERENCES tb_facilitadores(id_facilitador));
+	CONSTRAINT tb_facilitador_turma_fk_id_facilitador  FOREIGN KEY (id_facilitador) REFERENCES tb_facilitadores(id_facilitador)
+);
 
 INSERT INTO tb_facilitador_turma(id_facilitador,id_turma)
 VALUES
-		(6, 'T1'),
+	(6, 'T1'),
 	(7, 'T1'),
 	(8, 'T2'),
 	(9, 'T2'),
